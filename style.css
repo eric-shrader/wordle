@@ -1,0 +1,44 @@
+#gridbox {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    margin: auto;
+    gap: 5px;
+    width: 320px;
+    height: 385px;
+    margin-top: 20vh;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.tile {
+    border: gray 2px solid;
+    opacity: 0.3;
+    padding-top: 6px;
+}
+
+header {
+    text-align: center;
+    font-weight: 900;
+    font-family: sans-serif;
+    font-size: 1.8em;
+    padding: 10px;
+    width: 100vw;
+    border-bottom: lightgray 1px solid;
+}
+
+@media (orientation: portrait) {
+    header {
+        font-size: 10em;
+    }
+    #gridbox {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        gap: 1vw;
+        width:79vw;
+        height: 94vw;
+        margin-top: 10vh;
+    }
+}
