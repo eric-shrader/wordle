@@ -9,7 +9,7 @@ for (let i=0; i<wordbank.length; i++) {
     wordbank[i] = wordbank[i].toUpperCase();
 }
 let answer = wordbank[Math.floor(wordbank.length*Math.random())];
-answer = "BLOND"
+answer = "BLOND";
 console.log(answer);
 window.addEventListener("keydown", writeLetter);
 
@@ -44,27 +44,48 @@ function writeLetter(evt) {
                         console.log("You Win!");
                         hasWon = true;
                     } //determine if player got any letters right and then move on to next row
+                    let answer2 = answer; //determine if letter is in right place
                     for (let i=0; i<5; i++) {
                         let index = count - 5 + i;
-                        for (let j=0; j<5; j++) {
-                            if (currentWord.charAt(i) == answer.charAt(j)) {
-                                if (i == j) {
-                                    tiles[index].style.backgroundColor = "#6aaa64";
-                                    tiles[index].isColored = true;
-                                    break;
+                        if (currentWord.charAt(i) == answer2.charAt(i)) {
+                            tiles[index].style.backgroundColor = "#6aaa64";
+                            tiles[index].isGreen = true;
+                            tiles[index].isColored = true;
+                            let answer3 = answer2;
+                            answer2 = "";
+                            for (let k=0; k<answer3.length; k++) {
+                                if (k===i) {
+                                    answer2 += "!";
                                 } else {
-                                    tiles[index].style.backgroundColor = "#c9b458";
-                                    tiles[index].isColored = true;
+                                    answer2 += answer3.charAt(k);
+                                    console.log(answer2);
                                 }
                             }
                         }
-                        if (!tiles[index].isColored) {
-                            tiles[index].style.backgroundColor = "gray";
+                    }
+                    for (let i=0; i<5; i++) { //determine if letter is in word at all
+                        let index = count - 5 + i;
+                        for (let j=0; j<answer2.length; j++) {
+                            if (currentWord.charAt(i) == answer2.charAt(j) && !(tiles[index].isGreen)) {
+                                tiles[index].style.backgroundColor = "#c9b458";
+                                tiles[index].isColored = true;
+                                let answer3 = answer2;
+                                answer2 = "";
+                                for (let k=0; k<answer3.length; k++) {
+                                    if (k===j) {
+                                        answer2 += "!";
+                                    } else {
+                                        answer2 += answer3.charAt(k);
+                                        console.log(answer2);
+                                    }
+                                } //if letter isnt in word, make it gray
+                            } else if (!tiles[index].isColored) {
+                                tiles[index].style.backgroundColor = "gray";   
+                            }
                         }
                     }
-                    break;
-                }
-            } //if player guess isnt as word, then leave
+                 }
+            } //if player guess isnt a word, then leave
             if (!isWord) {
                 wordsGuessed[count/5] = "";
                 return;
