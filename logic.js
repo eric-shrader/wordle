@@ -9,7 +9,6 @@ for (let i=0; i<wordbank.length; i++) {
     wordbank[i] = wordbank[i].toUpperCase();
 }
 let answer = wordbank[Math.floor(wordbank.length*Math.random())];
-answer = "BLOND";
 console.log(answer);
 window.addEventListener("keydown", writeLetter);
 
@@ -58,7 +57,6 @@ function writeLetter(evt) {
                                     answer2 += "!";
                                 } else {
                                     answer2 += answer3.charAt(k);
-                                    console.log(answer2);
                                 }
                             }
                         }
@@ -76,7 +74,6 @@ function writeLetter(evt) {
                                         answer2 += "!";
                                     } else {
                                         answer2 += answer3.charAt(k);
-                                        console.log(answer2);
                                     }
                                 } //if letter isnt in word, make it gray
                             } else if (!tiles[index].isColored) {

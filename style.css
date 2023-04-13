@@ -1,4 +1,4 @@
-#gridbox {
+#grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -6,7 +6,7 @@
     gap: 5px;
     width: 320px;
     height: 385px;
-    margin-top: 20vh;
+    margin-top: 15vh;
     text-align: center;
     font-size: 2.5em;
     font-weight: bold;
@@ -29,16 +29,24 @@ header {
     border-bottom: lightgray 1px solid;
 }
 
-@media (orientation: portrait) {
-    header {
-        font-size: 10em;
-    }
-    #gridbox {
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-        gap: 1vw;
-        width:79vw;
-        height: 94vw;
-        margin-top: 10vh;
-    }
+#keyboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 600px;
+    height: 200px;
+    margin: 15vh auto;
+    font-weight: bold;
+    font-size: 1.5em;
 }
+
+.keypad {
+    background: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 45px;
+    border-radius: 7%;
+}
+
